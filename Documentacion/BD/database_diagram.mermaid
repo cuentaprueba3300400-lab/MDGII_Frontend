@@ -1,0 +1,254 @@
+erDiagram
+    USERS ||--o{ PROJECTS : creates
+    USERS ||--o{ TASKS : "assigned to"
+    USERS ||--o{ TEAMS : belongs_to
+    USERS ||--o{ REPORTS : generates
+    USERS ||--o{ AUDIT_LOGS : performs
+    USERS }o--|| ROLES : has
+    
+    ROLES ||--o{ ROLE_PERMISSIONS : has
+    
+    PROJECTS ||--o{ TASKS : contains
+    PROJECTS ||--o{ MILESTONES : has
+    PROJECTS }o--o{ TEAMS : "assigned to"
+    PROJECTS ||--o{ PROJECT_MEMBERS : has
+    
+    TASKS ||--o{ TASK_COMMENTS : has
+    TASKS ||--o{ TASK_ATTACHMENTS : has
+    TASKS }o--o{ TASK_DEPENDENCIES : depends_on
+    
+    TEAMS ||--o{ TEAM_MEMBERS : contains
+    
+    LOGISTICS ||--o{ ROUTES : manages
+    ROUTES ||--o{ ROUTE_STOPS : contains
+    ROUTES }o--|| VEHICLES : uses
+    
+    REPORTS ||--o{ SCHEDULED_REPORTS : schedules
+    
+    USERS {
+        int id PK
+        string email UK
+        string password_hash
+        string first_name
+        string last_name
+        string phone
+        int role_id FK
+        string department
+        string timezone
+        string language
+        boolean is_active
+        datetime last_login
+        datetime created_at
+        datetime updated_at
+    }
+    
+    ROLES {
+        int id PK
+        string name UK
+        string description
+        int level
+        datetime created_at
+        datetime updated_at
+    }
+    
+    ROLE_PERMISSIONS {
+        int id PK
+        int role_id FK
+        string resource
+        boolean can_create
+        boolean can_read
+        boolean can_update
+        boolean can_delete
+        json additional_permissions
+    }
+    
+    PROJECTS {
+        int id PK
+        string name
+        text description
+        enum status
+        enum priority
+        decimal budget
+        decimal spent
+        date start_date
+        date end_date
+        int progress_percentage
+        int created_by FK
+        int manager_id FK
+        boolean is_archived
+        datetime created_at
+        datetime updated_at
+    }
+    
+    PROJECT_MEMBERS {
+        int id PK
+        int project_id FK
+        int user_id FK
+        enum role
+        datetime joined_at
+    }
+    
+    TASKS {
+        int id PK
+        int project_id FK
+        string title
+        text description
+        enum status
+        enum priority
+        int assigned_to FK
+        date due_date
+        int estimated_hours
+        int actual_hours
+        int progress_percentage
+        int created_by FK
+        datetime created_at
+        datetime updated_at
+    }
+    
+    TASK_DEPENDENCIES {
+        int id PK
+        int task_id FK
+        int depends_on_task_id FK
+        enum dependency_type
+        datetime created_at
+    }
+    
+    TASK_COMMENTS {
+        int id PK
+        int task_id FK
+        int user_id FK
+        text comment
+        datetime created_at
+    }
+    
+    TASK_ATTACHMENTS {
+        int id PK
+        int task_id FK
+        string file_name
+        string file_path
+        int file_size
+        string mime_type
+        int uploaded_by FK
+        datetime uploaded_at
+    }
+    
+    MILESTONES {
+        int id PK
+        int project_id FK
+        string name
+        text description
+        date due_date
+        enum status
+        datetime created_at
+        datetime updated_at
+    }
+    
+    TEAMS {
+        int id PK
+        string name
+        text description
+        int leader_id FK
+        string department
+        boolean is_active
+        datetime created_at
+        datetime updated_at
+    }
+    
+    TEAM_MEMBERS {
+        int id PK
+        int team_id FK
+        int user_id FK
+        enum role
+        datetime joined_at
+    }
+    
+    VEHICLES {
+        int id PK
+        string vehicle_number UK
+        enum vehicle_type
+        int capacity_kg
+        enum status
+        datetime last_maintenance
+        datetime created_at
+        datetime updated_at
+    }
+    
+    ROUTES {
+        int id PK
+        string route_name
+        int driver_id FK
+        int vehicle_id FK
+        enum status
+        decimal total_distance_km
+        int estimated_duration_minutes
+        int progress_percentage
+        date scheduled_date
+        datetime created_at
+        datetime updated_at
+    }
+    
+    ROUTE_STOPS {
+        int id PK
+        int route_id FK
+        int sequence_order
+        string location_name
+        decimal latitude
+        decimal longitude
+        enum status
+        datetime scheduled_time
+        datetime actual_arrival_time
+        text notes
+    }
+    
+    REPORTS {
+        int id PK
+        string report_name
+        enum report_type
+        int generated_by FK
+        json filters
+        string file_path
+        int file_size_bytes
+        datetime generated_at
+    }
+    
+    SCHEDULED_REPORTS {
+        int id PK
+        int report_id FK
+        enum frequency
+        json recipients
+        datetime next_run
+        boolean is_active
+        datetime created_at
+    }
+    
+    NOTIFICATIONS {
+        int id PK
+        int user_id FK
+        string title
+        text message
+        enum type
+        enum priority
+        boolean is_read
+        json metadata
+        datetime created_at
+    }
+    
+    AUDIT_LOGS {
+        int id PK
+        int user_id FK
+        string action
+        string resource_type
+        int resource_id
+        json old_values
+        json new_values
+        string ip_address
+        datetime created_at
+    }
+    
+    SYSTEM_SETTINGS {
+        int id PK
+        string setting_key UK
+        text setting_value
+        string description
+        datetime updated_at
+    }

@@ -1,0 +1,75 @@
+graph TB
+    A[Ventana Tareas] --> B[Métricas de Dashboard]
+    A --> C[Sistema de Filtros]
+    A --> D[Vistas de Tareas]
+    A --> E[Gestión de Tareas]
+    A --> F[Acciones por Nivel]
+    
+    B --> B1[Total Tasks]
+    B --> B2[In Progress]
+    B --> B3[Completed Today]
+    B --> B4[Overdue]
+    
+    C --> C1[Búsqueda por Texto]
+    C --> C2[Filtro por Estado]
+    C --> C3[Filtro por Prioridad]
+    C --> C4[Filtro por Proyecto]
+    C --> C5[Filtro por Asignado]
+    
+    D --> D1[List View]
+    D --> D2[Kanban Board]
+    D --> D3[Calendar View]
+    D --> D4[Gantt Chart]
+    
+    D2 --> D21[To Do]
+    D2 --> D22[In Progress]
+    D2 --> D23[In Review]
+    D2 --> D24[Completed]
+    
+    E --> E1[Crear Tarea]
+    E --> E2[Editar Tarea]
+    E --> E3[Asignar/Reasignar]
+    E --> E4[Cambiar Estado]
+    E --> E5[Gestionar Dependencias]
+    
+    F --> F1[Nivel Campo]
+    F --> F2[Nivel Administrativo]
+    F --> F3[Nivel Administrador]
+    
+    %% Nivel Campo
+    subgraph "Nivel 1: Campo"
+        G1[Ver Tareas Asignadas]
+        G2[Actualizar Progreso]
+        G3[Cambiar Estado Propio]
+        G4[Comentar en Tareas]
+        G5[Adjuntar Archivos]
+    end
+    
+    %% Nivel Administrativo
+    subgraph "Nivel 2: Administrativo"
+        H1[Crear/Editar Tareas]
+        H2[Asignar a su Equipo]
+        H3[Ver Métricas Departamentales]
+        H4[Gestionar Dependencias]
+        H5[Aprobar Cambios]
+    end
+    
+    %% Nivel Administrador
+    subgraph "Nivel 3: Administrador"
+        I1[Vista Global de Tareas]
+        I2[Reasignar Entre Departamentos]
+        I3[Configurar Workflows]
+        I4[Análisis de Productividad]
+        I5[Templates de Tareas]
+    end
+    
+    F1 --> G1
+    F2 --> H1
+    F3 --> I1
+    
+    style A fill:#2d5a27
+    style B fill:#4a7c59
+    style C fill:#4a7c59
+    style D fill:#4a7c59
+    style E fill:#4a7c59
+    style F fill:#dc3545

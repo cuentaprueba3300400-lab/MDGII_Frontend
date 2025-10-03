@@ -1,0 +1,61 @@
+graph TB
+    A[Panel Principal] --> B[Header Global]
+    A --> C[Métricas Principales]
+    A --> D[Centro de Notificaciones]
+    A --> E[Panel Personalizable]
+    A --> F[Acciones Rápidas]
+    
+    B --> B1[Logo/Nombre App]
+    B --> B2[Barra de Búsqueda]
+    B --> B3[Perfil de Usuario]
+    B --> B4[Configuraciones]
+    
+    C --> C1[Widgets de KPIs]
+    C --> C2[Indicadores de Estado]
+    C --> C3[Progreso Visual]
+    
+    D --> D1[Alertas Críticas]
+    D --> D2[Notificaciones por Tipo]
+    D --> D3[Historial de Notificaciones]
+    D --> D4[Filtros y Configuración]
+    
+    E --> E1[Widgets Arrastrables]
+    E --> E2[Pestañas de Vista]
+    E --> E3[Configuración de Layout]
+    
+    F --> F1[Crear Proyecto]
+    F --> F2[Asignar Tarea]
+    F --> F3[Generar Reporte]
+    F --> F4[Exportar Datos]
+    
+    %% Niveles de Acceso
+    subgraph "Nivel 1: Campo"
+        G1[Proyectos Asignados]
+        G2[Tareas Personales]
+        G3[Equipo Directo]
+        G4[Notificaciones Operativas]
+    end
+    
+    subgraph "Nivel 2: Administrativo"
+        H1[Múltiples Equipos]
+        H2[Distribución de Recursos]
+        H3[Métricas Comparativas]
+        H4[Alertas de Gestión]
+    end
+    
+    subgraph "Nivel 3: Administrador"
+        I1[Vista Organizacional]
+        I2[KPIs Estratégicos]
+        I3[Análisis Predictivo]
+        I4[Decisiones Críticas]
+    end
+    
+    C1 --> G1
+    C1 --> H1
+    C1 --> I1
+    
+    style A fill:#2d5a27
+    style B fill:#4a7c59
+    style C fill:#4a7c59
+    style D fill:#4a7c59
+    style E fill:#4a7c59

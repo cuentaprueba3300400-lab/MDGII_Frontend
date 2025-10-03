@@ -1,0 +1,67 @@
+graph TB
+    A[Login] --> B[Interfaz de Usuario]
+    A --> C[Validaciones Frontend]
+    A --> D[Comunicación Backend]
+    A --> E[Gestión de Estados]
+    A --> F[Seguridad y Protección]
+    
+    B --> B1[Campo Usuario]
+    B --> B2[Campo Contraseña]
+    B --> B3[Botón Ingresar]
+    B --> B4[Indicadores Visuales]
+    
+    C --> C1[Validación de Campos Vacíos]
+    C --> C2[Formato de Usuario]
+    C --> C3[Feedback en Tiempo Real]
+    
+    D --> D1[Request HTTP/HTTPS]
+    D --> D2[Envío de Credenciales]
+    D --> D3[Recepción de Token]
+    D --> D4[Manejo de Respuestas]
+    
+    E --> E1[Estado Inicial]
+    E --> E2[Estado de Carga]
+    E --> E3[Estado de Éxito]
+    E --> E4[Estados de Error]
+    
+    F --> F1[Protección CSRF]
+    F --> F2[Límite de Intentos]
+    F --> F3[Conexión Segura]
+    F --> F4[No Almacenar Credenciales]
+    
+    %% Flujo de Estados
+    subgraph "Flujo de Autenticación"
+        G1[Usuario Ingresa Datos]
+        G2[Validación Frontend]
+        G3[Envío al Backend]
+        G4[Validación Backend]
+        G5[Generación de Token]
+        G6[Redirección a Panel]
+    end
+    
+    G1 --> G2
+    G2 --> G3
+    G3 --> G4
+    G4 --> G5
+    G5 --> G6
+    
+    %% Manejo de Errores
+    subgraph "Gestión de Errores"
+        H1[Credenciales Incorrectas]
+        H2[Usuario Bloqueado]
+        H3[Error de Conectividad]
+        H4[Error del Servidor]
+        H5[Sesión Expirada]
+    end
+    
+    D4 --> H1
+    D4 --> H2
+    D4 --> H3
+    D4 --> H4
+    
+    style A fill:#2d5a27
+    style B fill:#4a7c59
+    style C fill:#4a7c59
+    style D fill:#4a7c59
+    style E fill:#4a7c59
+    style F fill:#dc3545

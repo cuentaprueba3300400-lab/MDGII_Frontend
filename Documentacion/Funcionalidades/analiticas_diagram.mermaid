@@ -1,0 +1,66 @@
+graph TB
+    A[Ventana Analíticas] --> B[Métricas de KPIs]
+    A --> C[Visualizaciones Temporales]
+    A --> D[Análisis de Rutas Críticas]
+    A --> E[Herramientas de Control]
+    A --> F[Accesos por Nivel]
+    
+    B --> B1[Proyectos Activos]
+    B --> B2[Tareas en Ruta Crítica]
+    B --> B3[Porcentaje de Cumplimiento]
+    B --> B4[Promedio de Finalización]
+    
+    C --> C1[Gantt Chart]
+    C --> C2[Timeline View]
+    C --> C3[Critical Path View]
+    C --> C4[Vista de Progreso]
+    
+    D --> D1[Duración de Ruta Crítica]
+    D --> D2[Progreso de Ruta Crítica]
+    D --> D3[Nivel de Riesgo]
+    D --> D4[Análisis de Mitigación]
+    
+    E --> E1[Filtros Temporales]
+    E --> E2[Zoom y Navegación]
+    E --> E3[Exportar Timeline]
+    E --> E4[Generar Reportes]
+    
+    F --> F1[Nivel Campo]
+    F --> F2[Nivel Administrativo]
+    F --> F3[Nivel Administrador]
+    
+    %% Nivel Campo
+    subgraph "Nivel 1: Campo"
+        G1[Tareas Personales en Gantt]
+        G2[Progreso Individual]
+        G3[Dependencias de sus Tareas]
+        G4[Vista Simplificada]
+    end
+    
+    %% Nivel Administrativo
+    subgraph "Nivel 2: Administrativo"
+        H1[Análisis Departamental]
+        H2[Comparativas de Eficiencia]
+        H3[Cuellos de Botella]
+        H4[Predicciones de Entrega]
+        H5[Análisis de Recursos]
+    end
+    
+    %% Nivel Administrador
+    subgraph "Nivel 3: Administrador"
+        I1[Vista Organizacional Completa]
+        I2[Análisis de Portfolio]
+        I3[Métricas Estratégicas]
+        I4[Simulación de Escenarios]
+        I5[ROI por Proyecto]
+    end
+    
+    F1 --> G1
+    F2 --> H1
+    F3 --> I1
+    
+    style A fill:#2d5a27
+    style B fill:#4a7c59
+    style C fill:#4a7c59
+    style D fill:#dc3545
+    style E fill:#4a7c59

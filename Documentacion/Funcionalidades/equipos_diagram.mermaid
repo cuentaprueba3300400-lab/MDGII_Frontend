@@ -1,0 +1,68 @@
+graph TB
+    A[Ventana Equipos] --> B[Métricas Globales]
+    A --> C[Gestión de Equipos]
+    A --> D[Análisis de Rendimiento]
+    A --> E[Gestión de Miembros]
+    A --> F[Accesos por Nivel]
+    
+    B --> B1[Total Equipos]
+    B --> B2[Total Miembros]
+    B --> B3[Eficiencia Promedio]
+    B --> B4[Proyectos Activos]
+    
+    C --> C1[Vista de Tarjetas]
+    C --> C2[Información del Equipo]
+    C --> C3[Líder y Miembros]
+    C --> C4[Proyectos Asignados]
+    C --> C5[Indicadores de Estado]
+    
+    D --> D1[Rendimiento por Equipo]
+    D2[Distribución de Habilidades]
+    D --> D3[Mejores Equipos del Mes]
+    D --> D4[Análisis Comparativo]
+    
+    E --> E1[Miembros Disponibles]
+    E --> E2[Asignación a Equipos]
+    E --> E3[Gestión de Habilidades]
+    E --> E4[Métricas Individuales]
+    
+    F --> F1[Nivel Campo]
+    F --> F2[Nivel Administrativo]
+    F --> F3[Nivel Administrador]
+    
+    %% Nivel Campo
+    subgraph "Nivel 1: Campo"
+        G1[Ver Su Equipo]
+        G2[Contactos de Equipo]
+        G3[Proyectos Compartidos]
+        G4[Vista Limitada]
+    end
+    
+    %% Nivel Administrativo
+    subgraph "Nivel 2: Administrativo"
+        H1[Gestionar Equipos Departamentales]
+        H2[Asignar/Reasignar Miembros]
+        H3[Análisis de Rendimiento]
+        H4[Optimizar Recursos]
+        H5[Crear Nuevos Equipos]
+    end
+    
+    %% Nivel Administrador
+    subgraph "Nivel 3: Administrador"
+        I1[Vista Organizacional Completa]
+        I2[Reestructuración de Equipos]
+        I3[Análisis Estratégico de RRHH]
+        I4[Planificación de Capacidad]
+        I5[Métricas de Rendimiento Global]
+    end
+    
+    F1 --> G1
+    F2 --> H1
+    F3 --> I1
+    
+    style A fill:#2d5a27
+    style B fill:#4a7c59
+    style C fill:#4a7c59
+    style D fill:#4a7c59
+    style E fill:#4a7c59
+    style F fill:#dc3545

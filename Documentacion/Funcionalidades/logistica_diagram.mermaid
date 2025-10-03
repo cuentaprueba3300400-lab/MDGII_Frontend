@@ -1,0 +1,66 @@
+graph TB
+    A[Ventana Logística] --> B[Métricas Operativas]
+    A --> C[Gestión de Rutas]
+    A --> D[Rastreo de Recursos]
+    A --> E[Optimización Inteligente]
+    A --> F[Accesos por Nivel]
+    
+    B --> B1[Rutas Activas]
+    B --> B2[Vehículos Disponibles]
+    B --> B3[Distancia Total]
+    B --> B4[Tiempo Promedio de Entrega]
+    
+    C --> C1[Map View Live]
+    C --> C2[Route Management]
+    C --> C3[Estado de Rutas]
+    C --> C4[Asignación de Conductores]
+    
+    D --> D1[Resource Location Tracking]
+    D --> D2[Estado de Vehículos]
+    D --> D3[Geofencing & Alerts]
+    D --> D4[Tracking en Tiempo Real]
+    
+    E --> E1[Route Optimizer]
+    E --> E2[Puntos de Interés]
+    E --> E3[Configuración de Optimización]
+    E --> E4[Resumen de Rutas]
+    
+    F --> F1[Nivel Campo]
+    F --> F2[Nivel Administrativo]
+    F --> F3[Nivel Administrador]
+    
+    %% Nivel Campo
+    subgraph "Nivel 1: Campo"
+        G1[Ver Rutas Asignadas]
+        G2[Actualizar Estado de Entrega]
+        G3[Reportar Incidencias]
+        G4[Confirmar Ubicaciones]
+    end
+    
+    %% Nivel Administrativo
+    subgraph "Nivel 2: Administrativo"
+        H1[Crear y Gestionar Rutas]
+        H2[Asignar Recursos y Conductores]
+        H3[Monitoreo de Flota]
+        H4[Optimizar Rutas Departamentales]
+        H5[Análisis de Eficiencia]
+    end
+    
+    %% Nivel Administrador
+    subgraph "Nivel 3: Administrador"
+        I1[Vista Global de Operaciones]
+        I2[Análisis de Costos Logísticos]
+        I3[Planificación Estratégica]
+        I4[Configuración de Sistema]
+        I5[Métricas de ROI Logístico]
+    end
+    
+    F1 --> G1
+    F2 --> H1
+    F3 --> I1
+    
+    style A fill:#2d5a27
+    style B fill:#4a7c59
+    style C fill:#4a7c59
+    style D fill:#4a7c59
+    style E fill:#dc3545

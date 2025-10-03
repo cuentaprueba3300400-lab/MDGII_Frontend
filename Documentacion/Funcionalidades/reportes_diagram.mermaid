@@ -1,0 +1,68 @@
+graph TB
+    A[Ventana Reportes] --> B[Generación Personalizada]
+    A --> C[Gestión de Reportes]
+    A --> D[Reportes Programados]
+    A --> E[Biblioteca de Reportes]
+    A --> F[Accesos por Nivel]
+    
+    B --> B1[Configuración del Reporte]
+    B --> B2[Selección de Proyecto]
+    B --> B3[Tipo de Reporte]
+    B --> B4[Rango de Fechas]
+    B --> B5[Formato de Archivo]
+    
+    C --> C1[Reportes Recientes]
+    C --> C2[Estado de Generación]
+    C --> C3[Descarga de Archivos]
+    C --> C4[Gestión de Historial]
+    
+    D --> D1[Configuración Automática]
+    D --> D2[Frecuencia de Generación]
+    D --> D3[Destinatarios]
+    D --> D4[Programar Nuevo Reporte]
+    
+    E --> E1[Todos los Reportes]
+    E --> E2[Filtros Avanzados]
+    E --> E3[Búsqueda por Criterios]
+    E --> E4[Categorización]
+    
+    F --> F1[Nivel Campo]
+    F --> F2[Nivel Administrativo]
+    F --> F3[Nivel Administrador]
+    
+    %% Nivel Campo
+    subgraph "Nivel 1: Campo"
+        G1[Reportes de Sus Tareas]
+        G2[Progreso Personal]
+        G3[Descargar PDF/Excel]
+        G4[Vista Limitada]
+    end
+    
+    %% Nivel Administrativo
+    subgraph "Nivel 2: Administrativo"
+        H1[Reportes Departamentales]
+        H2[Análisis de Equipos]
+        H3[Reportes Programados]
+        H4[Distribución Automática]
+        H5[Templates Personalizados]
+    end
+    
+    %% Nivel Administrador
+    subgraph "Nivel 3: Administrador"
+        I1[Reportes Organizacionales]
+        I2[Análisis Estratégicos]
+        I3[Configuración Global]
+        I4[Métricas Ejecutivas]
+        I5[Exportación Masiva]
+    end
+    
+    F1 --> G1
+    F2 --> H1
+    F3 --> I1
+    
+    style A fill:#2d5a27
+    style B fill:#4a7c59
+    style C fill:#4a7c59
+    style D fill:#4a7c59
+    style E fill:#4a7c59
+    style F fill:#dc3545

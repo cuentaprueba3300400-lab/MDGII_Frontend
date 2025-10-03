@@ -1,0 +1,65 @@
+graph TB
+    A[Ventana Proyectos] --> B[Vista Lista/Grid]
+    A --> C[Detalle de Proyecto]
+    A --> D[Filtros y Búsqueda]
+    A --> E[Acciones por Nivel]
+    
+    B --> B1[Proyectos Activos]
+    B --> B2[Proyectos Archivados]
+    B --> B3[Cards con Métricas]
+    B --> B4[Estados Visuales]
+    
+    C --> C1[KPIs del Proyecto]
+    C --> C2[Pestañas de Navegación]
+    C --> C3[Timeline y Fechas]
+    C --> C4[Actividad Reciente]
+    
+    C2 --> C21[Overview]
+    C2 --> C22[Tasks]
+    C2 --> C23[Team]
+    C2 --> C24[Milestones]
+    
+    D --> D1[Búsqueda por Texto]
+    D --> D2[Filtro por Estado]
+    D --> D3[Filtro por Prioridad]
+    D --> D4[Filtro por Equipo]
+    
+    E --> E1[Nivel Campo]
+    E --> E2[Nivel Administrativo]
+    E --> E3[Nivel Administrador]
+    
+    %% Nivel de Acceso Campo
+    subgraph "Nivel 1: Campo"
+        F1[Ver Proyectos Asignados]
+        F2[Actualizar Progreso]
+        F3[Ver Tareas del Proyecto]
+        F4[Comentar en Proyecto]
+    end
+    
+    %% Nivel Administrativo
+    subgraph "Nivel 2: Administrativo"
+        G1[Crear/Editar Proyectos]
+        G2[Asignar Equipos]
+        G3[Gestionar Presupuestos]
+        G4[Aprobar Cambios]
+        G5[Reasignar Recursos]
+    end
+    
+    %% Nivel Administrador
+    subgraph "Nivel 3: Administrador"
+        H1[Vista Global de Proyectos]
+        H2[Análisis de Rentabilidad]
+        H3[Configurar Templates]
+        H4[Archivar/Reactivar]
+        H5[Métricas Estratégicas]
+    end
+    
+    E1 --> F1
+    E2 --> G1
+    E3 --> H1
+    
+    style A fill:#2d5a27
+    style B fill:#4a7c59
+    style C fill:#4a7c59
+    style D fill:#4a7c59
+    style E fill:#dc3545

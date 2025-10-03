@@ -1,0 +1,72 @@
+Asunto: Especificaciones de la API de Autenticación - Respuesta a sus Preguntas
+
+Hola equipo de Frontend,
+
+Gracias por enviarnos sus requerimientos y preguntas sobre la API de autenticación. Hemos revisado la implementación actual y aquí están los detalles:
+
+1. Registro de Usuario (User Registration)
+
+- Endpoint: Actualmente, no tenemos un endpoint de registro de usuario implementado directamente en /api/auth/register . Nuestro enfoque inicial ha sido en el inicio de sesión para usuarios ya existentes.
+- Recomendación: Si necesitan un endpoint de registro, por favor, háganoslo saber para que podamos priorizar su desarrollo. Necesitaríamos confirmar los campos exactos que desean en el Request Body y el formato de la Response .
+2. Inicio de Sesión de Usuario (User Login)
+
+- Endpoint: /api/auth/login
+- Método HTTP: POST
+- Descripción: Permite a un usuario existente iniciar sesión.
+- Request Body (JSON):
+  ```
+  {
+    "email": "string",    // Correo electrónico 
+    del usuario
+    "password": "string"  // Contraseña del usuario
+  }
+  ```
+- Response (JSON):
+  - Éxito (HTTP 200 OK):
+    ```
+    {
+      "success": true,
+      "data": {
+        "access_token": "string", // JWT para 
+        autenticación futura
+        "token_type": "bearer",
+        "expires_in": 3600,       // Tiempo de 
+        expiración en segundos (actualmente fijo, 
+        se hará dinámico)
+        "user": {
+          "id": "integer",
+          "email": "string",
+          "first_name": "string",
+          "last_name": "string",
+          "role": {
+            "id": "integer",
+            "name": "string",      // Nombre del 
+            rol (ej. "Colaborador", 
+            "Planificador")
+            "level": "integer"     // Nivel del 
+            rol (ej. 1, 2, 3)
+          }
+        }
+      }
+    }
+    ```
+  - Error (HTTP 401 Unauthorized):
+    ```
+    {
+      "detail": "Email o contraseña incorrectos"
+    }
+    ``` Nota: El formato de error es el estándar de FastAPI para HTTPException.
+3. Consideraciones Adicionales y Preguntas:
+
+- Tipo de Token de Autenticación: Se utiliza JWT (JSON Web Token) . La estructura del token es estándar y contiene el sub (email del usuario) y user_id . El tiempo de expiración actual es de 3600 segundos (1 hora), pero planeamos hacerlo configurable.
+- Almacenamiento del Token: Para la seguridad, recomendamos almacenar el token en HttpOnly cookies para protegerlo contra ataques XSS. Si esto no es posible o prefieren otra opción, podemos discutir alternativas, pero las cookies HttpOnly son generalmente la opción más segura para tokens de acceso.
+- CORS (Cross-Origin Resource Sharing): El backend está configurado para manejar CORS a través de FastAPI. Asegúrense de que el dominio del frontend esté incluido en la lista de orígenes permitidos en la configuración del backend. Actualmente, http://localhost:3000 debería estar permitido para desarrollo.
+- Manejo de Errores: Para errores de la API, utilizamos las HTTPException de FastAPI, que devuelven un JSON con una clave "detail" que contiene el mensaje de error. Por ejemplo: {"detail": "Email o contraseña incorrectos"} .
+- Protección de Rutas: Para acceder a rutas protegidas, deben enviar el token JWT en el encabezado Authorization con el esquema Bearer , de la siguiente manera: Authorization: Bearer <su_token_jwt_aqui>
+- Endpoint de Logout (Opcional pero recomendado): Actualmente, no tenemos un endpoint de logout implementado . La invalidación del token se maneja por su tiempo de expiración. Si necesitan un endpoint de logout que invalide el token en el backend (por ejemplo, añadiéndolo a una lista negra), por favor, háganoslo saber.
+- Documentación de la API: Por el momento, la documentación se genera automáticamente por FastAPI en /docs (Swagger UI) y /redoc (ReDoc) una vez que el servidor está corriendo. Pueden acceder a ella en http://localhost:8000/docs o http://localhost:8000/redoc cuando el backend esté activo.
+Esperamos que esta información les sea de gran ayuda para la integración. Si tienen más preguntas o necesitan que desarrollemos los endpoints de registro o logout, no duden en comunicárnoslo.
+
+Saludos,
+
+Equipo de Backend

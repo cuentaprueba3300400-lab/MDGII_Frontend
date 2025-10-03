@@ -1,0 +1,65 @@
+graph TB
+    A[Ventana Configuración] --> B[Usuarios y Roles]
+    A --> C[Seguridad]
+    A --> D[Sistema]
+    A --> E[Personal]
+    A --> F[Accesos por Nivel]
+    
+    B --> B1[Gestión de Usuarios]
+    B --> B2[Roles y Permisos]
+    B --> B3[Estados de Usuario]
+    B --> B4[Auditoría de Accesos]
+    
+    C --> C1[Políticas de Contraseña]
+    C --> C2[Autenticación 2FA]
+    C --> C3[Registro de Auditoría]
+    C --> C4[Configuración de Sesiones]
+    
+    D --> D1[Gestión de Datos]
+    D --> D2[Notificaciones del Sistema]
+    D --> D3[Optimización de Rendimiento]
+    D --> D4[Archivado Automático]
+    
+    E --> E1[Información Personal]
+    E --> E2[Preferencias de Interfaz]
+    E --> E3[Notificaciones Personales]
+    E --> E4[Seguridad Personal]
+    
+    F --> F1[Nivel Campo]
+    F --> F2[Nivel Administrativo]
+    F --> F3[Nivel Administrador]
+    
+    %% Nivel Campo
+    subgraph "Nivel 1: Campo"
+        G1[Solo Configuración Personal]
+        G2[Perfil y Preferencias]
+        G3[Notificaciones Básicas]
+        G4[Seguridad de Cuenta]
+    end
+    
+    %% Nivel Administrativo
+    subgraph "Nivel 2: Administrativo"
+        H1[Personal + Notificaciones Sistema]
+        H2[Configuración Departamental]
+        H3[Sin Acceso a Usuarios/Roles]
+        H4[Configuraciones Limitadas]
+    end
+    
+    %% Nivel Administrador
+    subgraph "Nivel 3: Administrador"
+        I1[Acceso Total]
+        I2[Usuarios y Roles]
+        I3[Configuraciones Críticas]
+        I4[Políticas Organizacionales]
+    end
+    
+    F1 --> G1
+    F2 --> H1
+    F3 --> I1
+    
+    style A fill:#2d5a27
+    style B fill:#dc3545
+    style C fill:#dc3545
+    style D fill:#4a7c59
+    style E fill:#4a7c59
+    style F fill:#dc3545
